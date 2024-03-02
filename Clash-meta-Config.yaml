@@ -22,7 +22,6 @@ pr:
     type: select,
     proxies:
       [
-        ✅全部节点,
         ⚙️自动选择,
         💪手动选择,
         DIRECT,
@@ -63,12 +62,12 @@ proxy-providers:
   Xeno Link:
     <<: *p
     path: ./proxy_provider/Xeno Link.yaml
-    url: "#填订阅链接"
+    url: "#引号内填自己的订阅链接"
 
   LMXCorp:
     <<: *p
     path: ./proxy_provider/LMXCorp.yaml
-    url: "#填订阅链接"
+    url: "#引号内填自己的订阅链接"
 
 #  本地配置:
 #    <<: *p
@@ -368,26 +367,9 @@ proxies:
   #     - https://dns.cloudflare.com/dns-query
 
 proxy-groups:
-  - { name: ✅全部节点, <<: *use }
   - { name: ⚙️自动选择, <<: *use, tolerance: 2, type: url-test }
-    # 使用 WARP 的用户需要手动在下方的 proxies 字段内添加 WARP
-    # 例如 [WARP, 全部节点, 自动选择, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, DIRECT],
-  - {
-      name: 💪手动选择,
-      type: select,
-      proxies:
-        [
-          ✅全部节点,
-          ⚙️自动选择,
-          DIRECT,
-          🇭🇰香港,
-          🇹🇼台湾,
-          🇯🇵日本,
-          🇸🇬新加坡,
-          🇺🇸美国,
-          🌏其它地区
-        ],
-    }
+  - { name: 💪手动选择, <<: *use }
+  # 使用 WARP 的用户需要手动 proxies 字段内添加 WARP
   # 这里的 dns 指海外解析 dns 走的节点，一般跟随节点选择即可
   #- { name: dns, <<: *pr }
   # WARP 配置链式出站
@@ -397,10 +379,9 @@ proxy-groups:
       type: select,
       proxies:
         [
-          ✅全部节点,
           ⚙️自动选择,
-          DIRECT,
           💪手动选择,
+          DIRECT,
           🇭🇰香港,
           🇹🇼台湾,
           🇯🇵日本,
@@ -409,9 +390,8 @@ proxy-groups:
           🌏其它地区
         ],
     }
-  # 其他就是所有规则没匹配到的
-  # 可以理解为 ACL4SSR 配置里的 漏网之鱼
-  # 换言之，其他走代理就是绕过中国大陆地址，不走就是 GFWList 模式
+  # 漏网之鱼就是所有规则没匹配到的
+  # 换言之，漏网之鱼走代理就是绕过中国大陆地址，不走就是 GFWList 模式
   - { name: 🐟漏网之鱼, <<: *pr }
   - { 
       name: ⛔广告拦截, 
