@@ -23,13 +23,17 @@ pr:
     proxies:
       [
         ⚙️自动选择,
-        💪手动选择,
         DIRECT,
         🇭🇰香港,
         🇹🇼台湾,
         🇯🇵日本,
         🇸🇬新加坡,
         🇺🇸美国,
+        👉🇭🇰香港,
+        👉🇹🇼台湾,
+        👉🇯🇵日本,
+        👉🇸🇬新加坡,
+        👉🇺🇸美国,
         🌏其它地区,
       ],
   }
@@ -51,23 +55,23 @@ p:
 use: &use
   type: select
   use:
-    - Xeno Link
-    - LMXCorp
+    - A
+    - B
 #    - 本地配置
 
 # 订阅链接
 # 对于订阅来说，path 为选填项，但建议启用
 # 本地配置可以只填 path
 proxy-providers:
-  Xeno Link:
+  A:
     <<: *p
-    path: ./proxy_provider/Xeno Link.yaml
-    url: "#引号内填自己的订阅链接"
+    path: ./proxy_provider/A.yaml
+    url: ""
 
-  LMXCorp:
+  B:
     <<: *p
-    path: ./proxy_provider/LMXCorp.yaml
-    url: "#引号内填自己的订阅链接"
+    path: ./proxy_provider/B.yaml
+    url: "B"
 
 #  本地配置:
 #    <<: *p
@@ -84,7 +88,7 @@ rule-providers:
     format: yaml
     # path可为空(仅限clash.meta 1.15.0以上版本)
     path: ./rule_provider/anti-AD.yaml
-    url: "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
+    url: "https://anti-ad.net/clash.yaml"
     interval: 600
   # anti-AD 白名单规则
   anti-AD-white:
@@ -93,15 +97,16 @@ rule-providers:
     format: yaml
     # path可为空(仅限clash.meta 1.15.0以上版本)
     path: ./rule_provider/anti-AD-white.yaml
-    url: "https://raw.githubusercontent.com/privacy-protection-tools/dead-horse/master/anti-ad-white-for-clash.yaml"
+    url: "https://cdn.jsdelivr.net/gh/privacy-protection-tools/dead-horse@master/anti-ad-white-for-clash.yaml"
     interval: 600
-  BanProgramAD:
-    behavior: classical 
-    type: http
-    format: yaml
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanProgramAD.yaml"
-    interval: 86400
-    path: ./rule_provider/BanProgramAD.yaml
+  # 程序广告
+  #BanProgramAD:
+  #  behavior: classical 
+  #  type: http
+  #  format: yaml
+  #  url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanProgramAD.yaml"
+  #  interval: 86400
+  #  path: ./rule_provider/BanProgramAD.yaml
   OpenAI:
     type: http
     behavior: classical
@@ -118,14 +123,6 @@ rule-providers:
     path: ./rule_provider/Gemini.yaml
     url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml"
     interval: 600
-  Bing:
-    type: http
-    behavior: classical
-    format: yaml
-    # path可为空(仅限clash.meta 1.15.0以上版本)
-    path: ./rule_provider/Bing.yaml
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml"
-    interval: 600
   Copilot:
     type: http
     behavior: classical
@@ -133,6 +130,14 @@ rule-providers:
     # path可为空(仅限clash.meta 1.15.0以上版本)
     path: ./rule_provider/Copilot.yaml
     url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.yaml"
+    interval: 600
+  Claude:
+    type: http
+    behavior: classical
+    format: yaml
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    path: ./rule_provider/Claude.yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml"
     interval: 600
   YouTube:
     type: http
@@ -172,7 +177,7 @@ rule-providers:
     format: yaml
     # path可为空(仅限clash.meta 1.15.0以上版本)
     path: ./rule_provider/Apple.yaml
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml"
     interval: 600
   Microsoft:
     type: http
@@ -205,6 +210,14 @@ rule-providers:
     # path可为空(仅限clash.meta 1.15.0以上版本)
     path: ./rule_provider/X.yaml
     url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml"
+    interval: 600
+  TikTok:
+    type: http
+    behavior: classical
+    format: yaml
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    path: ./rule_provider/TikTok.yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TikTok/TikTok.yaml"
     interval: 600
   哔哩哔哩:
     type: http
@@ -308,7 +321,7 @@ dns:
   ipv6: true
   # 路由器个人建议使用 redir-host 以最佳兼容性
   # 其他设备可以使用 fake-ip
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
     - '*'
@@ -321,10 +334,11 @@ dns:
     - '[2402:4e00::]'
     - '[2400:3200::1]'
   nameserver:
-    - 'tls://8.8.4.4#dns'
-    - 'tls://1.0.0.1#dns'
-    - 'tls://[2001:4860:4860::8844]#dns'
-    - 'tls://[2606:4700:4700::1001]#dns'
+    # 单引号部分为DoT通过“自动选择”节点代理查询，代理后出现。示例：'tls://8.8.4.4#⚙️自动选择'
+    - 'tls://8.8.4.4#⚙️自动选择'
+    - 'tls://1.0.0.1#⚙️自动选择'
+    - 'tls://[2001:4860:4860::8844]#⚙️自动选择'
+    - 'tls://[2606:4700:4700::1001]#⚙️自动选择'
   proxy-server-nameserver:
     - https://doh.pub/dns-query
   nameserver-policy:
@@ -368,7 +382,8 @@ proxies:
 
 proxy-groups:
   - { name: ⚙️自动选择, <<: *use, tolerance: 2, type: url-test }
-  - { name: 💪手动选择, <<: *use }
+  # 手动选择模板，需要在分组添加手动选择
+  #- { name: 💪手动选择, <<: *use }
   # 使用 WARP 的用户需要手动 proxies 字段内添加 WARP
   # 这里的 dns 指海外解析 dns 走的节点，一般跟随节点选择即可
   #- { name: dns, <<: *pr }
@@ -380,13 +395,17 @@ proxy-groups:
       proxies:
         [
           ⚙️自动选择,
-          💪手动选择,
           DIRECT,
           🇭🇰香港,
           🇹🇼台湾,
           🇯🇵日本,
           🇸🇬新加坡,
           🇺🇸美国,
+          👉🇭🇰香港,
+          👉🇹🇼台湾,
+          👉🇯🇵日本,
+          👉🇸🇬新加坡,
+          👉🇺🇸美国,
           🌏其它地区
         ],
     }
@@ -397,12 +416,9 @@ proxy-groups:
       name: ⛔广告拦截, 
       type: select, 
       proxies: 
-        [REJECT, DIRECT, 💪手动选择],
+        [REJECT, DIRECT, ⚙️自动选择],
     }
-  - { name: 🤖OpenAI, <<: *pr }
-  - { name: 🦾Gemini, <<: *pr }
-  - { name: 🔍Bing, <<: *pr }
-  - { name: 🦿Copilot, <<: *pr }
+  - { name: 🤖AI, <<: *pr }
   - { name: 📹YouTube, <<: *pr }
   - { name: ▶️Twitch, <<: *pr }
   - { name: ☁️OneDrive, <<: *pr }
@@ -412,7 +428,8 @@ proxy-groups:
   - { name: Ⓜ️Microsoft, <<: *pr }
   - { name: 🏬Google, <<: *pr }
   - { name: 🛫Telegram, <<: *pr }
-  - { name: 🪓X, <<: *pr }
+  - { name: 🎵TikTok, <<: *pr }
+  - { name: 🐦X, <<: *pr }
   # bilibili打开之后会代理全站流量，可能导致部分版权视频反而无法播放或视频播放速度缓慢
   - { name: 📺哔哩哔哩, <<: *pr}
   - { name: 🕹️巴哈姆特, <<: *pr }
@@ -423,6 +440,11 @@ proxy-groups:
   - { name: 🇯🇵日本, <<: *use, tolerance: 2, type: url-test, filter: "(?i)日本|jp|japan" }
   - { name: 🇺🇸美国, <<: *use, tolerance: 2, type: url-test, filter: "(?i)美|us|unitedstates|united states" }
   - { name: 🇸🇬新加坡, <<: *use, tolerance: 2, type: url-test, filter: "(?i)(新|sg|singapore)" }
+  - { name: 👉🇭🇰香港, <<: *use, tolerance: 2, type: select, filter: "(?i)港|hk|hongkong|hong kong" }
+  - { name: 👉🇹🇼台湾, <<: *use, tolerance: 2, type: select, filter: "(?i)台|tw|taiwan" }
+  - { name: 👉🇯🇵日本, <<: *use, tolerance: 2, type: select, filter: "(?i)日本|jp|japan" }
+  - { name: 👉🇺🇸美国, <<: *use, tolerance: 2, type: select, filter: "(?i)美|us|unitedstates|united states" }
+  - { name: 👉🇸🇬新加坡, <<: *use, tolerance: 2, type: select, filter: "(?i)(新|sg|singapore)" }
   - {
       name: 🌏其它地区,
       <<: *use,
@@ -438,10 +460,10 @@ rules:
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT # quic
   - AND,((RULE-SET,anti-AD),(NOT,((RULE-SET,anti-AD-white)))),⛔广告拦截 # 感谢 Telegram @nextyahooquery 提供的建议
 
-  - RULE-SET,OpenAI,🤖OpenAI
-  - RULE-SET,Gemini,🦾Gemini
-  - RULE-SET,Bing,🔍Bing
-  - RULE-SET,Copilot,🦿Copilot
+  - RULE-SET,OpenAI,🤖AI
+  - RULE-SET,Gemini,🤖AI
+  - RULE-SET,Copilot,🤖AI
+  - RULE-SET,Claude,🤖AI
   - RULE-SET,YouTube,📹YouTube
   - RULE-SET,Twitch,▶️Twitch
   - RULE-SET,OneDrive,☁️OneDrive
@@ -450,7 +472,8 @@ rules:
   - RULE-SET,Microsoft,Ⓜ️Microsoft
   - RULE-SET,Google,🏬Google
   - RULE-SET,Telegram,🛫Telegram
-  - RULE-SET,X,🪓X
+  - RULE-SET,X,🐦X
+  - RULE-SET,TikTok,🎵TikTok
   - RULE-SET,哔哩哔哩,📺哔哩哔哩
   - RULE-SET,巴哈姆特,🕹️巴哈姆特
 
@@ -462,4 +485,5 @@ rules:
 
   - GEOSITE,CN,🇨🇳国内
   - GEOIP,CN,🇨🇳国内
+  - GEOSITE,geolocation-!cn,🐟漏网之鱼
   - MATCH,🐟漏网之鱼
