@@ -6,4 +6,12 @@
 
 **图标来自**
 **https://github.com/Koolson/Qure**
-**https://github.com/Orz-3/mini**
+**https://github.com/Orz-3/mini**  
+
+![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/2cc99e41-1504-430c-8d55-756c75e6c8eb)  
+config效果图  
+
+![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/6fa1d799-529b-40c4-9c40-962084267fda)  
+config-emoji效果图
+
+
