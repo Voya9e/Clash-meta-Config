@@ -9,10 +9,12 @@
 
 **https://github.com/Orz-3/mini**  
 
-![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/2cc99e41-1504-430c-8d55-756c75e6c8eb)  
+![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/dc9cde01-921b-4084-840d-bf98448c8f2c)
+
 config效果图  
 
-![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/6fa1d799-529b-40c4-9c40-962084267fda)  
+![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/ede509c6-f09d-447a-88fb-87ea7f00a007)
+
 config-emoji效果图
 
 
