@@ -65,12 +65,12 @@ use: &use
 # 对于订阅来说，path 为选填项，但建议启用
 # 本地配置可以只填 path
 proxy-providers:
-  Xeno Link:
+  A:
     <<: *p
     path: ./proxy_provider/A.yaml
     url: ""
 
-  LMXCorp:
+  B:
     <<: *p
     path: ./proxy_provider/B.yaml
     url: ""
@@ -109,6 +109,14 @@ rule-providers:
   #  url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanProgramAD.yaml"
   #  interval: 86400
   #  path: ./rule_provider/BanProgramAD.yaml
+  PayPal:
+    type: http
+    behavior: classical
+    format: yaml
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    path: ./rule_provider/PayPal.yaml
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/PayPal/PayPal.yaml"
+    interval: 600
   OpenAI:
     type: http
     behavior: classical
@@ -430,6 +438,7 @@ proxy-groups:
       proxies: 
         [REJECT, DIRECT, ⚙️ 自动选择],
     }
+  - { name: 💵 PayPal, <<: *pr }
   - { name: 🤖 AI, <<: *pr }
   - { name: 👀 GitHub, <<: *pr }
   - { name: 📹 YouTube, <<: *pr }
@@ -475,6 +484,7 @@ rules:
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT # quic
   - AND,((RULE-SET,anti-AD),(NOT,((RULE-SET,anti-AD-white)))),⛔ 广告拦截 # 感谢 Telegram @nextyahooquery 提供的建议
 
+  - RULE-SET,OpenAI,💵 PayPal
   - RULE-SET,OpenAI,🤖 AI
   - RULE-SET,Gemini,🤖 AI
   - RULE-SET,Copilot,🤖 AI
