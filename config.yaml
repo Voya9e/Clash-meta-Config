@@ -30,12 +30,12 @@ pr:
         日本,
         新加坡,
         美国,
-        👆香港,
-        👆台湾,
-        👆韩国,
-        👆日本,
-        👆新加坡,
-        👆美国,
+        👉香港,
+        👉台湾,
+        👉韩国,
+        👉日本,
+        👉新加坡,
+        👉美国,
         其它地区,
       ],
   }
@@ -359,10 +359,16 @@ dns:
     - 'tls://[2606:4700:4700::1001]#自动选择'
   proxy-server-nameserver:
     - https://doh.pub/dns-query
+
+  #clash-meta内核使用
   nameserver-policy:
     "geosite:cn,private":
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
+  
+  #stash报错请注释掉上面的nameserver-policy，并使用下面的nameserver-policy
+  #nameserver-policy:
+  #  'geosite:cn,private': https://223.5.5.5/dns-query#h3=true https://223.6.6.6/dns-query#h3=true
 
 # 多入站端口设置
 # listeners:
@@ -421,12 +427,12 @@ proxy-groups:
           日本,
           新加坡,
           美国,
-          👆香港,
-          👆台湾,
-          👆韩国,
-          👆日本,
-          👆新加坡,
-          👆美国,
+          👉香港,
+          👉台湾,
+          👉韩国,
+          👉日本,
+          👉新加坡,
+          👉美国,
           其它地区
         ],
     }
@@ -465,12 +471,12 @@ proxy-groups:
   - { name: 日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: url-test, filter: "(?i)日本|jp|japan" }
   - { name: 美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: url-test, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" }
   - { name: 新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: url-test, filter: "新加坡|狮城|SG|Singapore" }
-  - { name: 👆香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: select, filter: "(?i)港|hk|hongkong|hong kong" }
-  - { name: 👆台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: select, filter: "(?i)台|tw|taiwan" }
-  - { name: 👆韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: select, filter: "KR|Korea|KOR|首尔|韩|韓" }
-  - { name: 👆日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: select, filter: "(?i)日本|jp|japan" }
-  - { name: 👆美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: select, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" }
-  - { name: 👆新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: select, filter: "新加坡|狮城|SG|Singapore" }
+  - { name: 👉香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: select, filter: "(?i)港|hk|hongkong|hong kong" }
+  - { name: 👉台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: select, filter: "(?i)台|tw|taiwan" }
+  - { name: 👉韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: select, filter: "KR|Korea|KOR|首尔|韩|韓" }
+  - { name: 👉日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: select, filter: "(?i)日本|jp|japan" }
+  - { name: 👉美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: select, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" }
+  - { name: 👉新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: select, filter: "新加坡|狮城|SG|Singapore" }
   - {
       name: 其它地区,
       <<: *use,
