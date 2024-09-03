@@ -1,17 +1,4 @@
-# mihomo (Clash Meta) 懒人配置
-# 版本 V1.4.1-231211
-# https://gist.github.com/liuran001/5ca84f7def53c70b554d3f765ff86a33
-# 作者: 笨蛋ovo (bdovo.cc)
-# Telegram: https://t.me/baka_not_baka
-# 关注我的 Telegram 频道谢谢喵 https://t.me/s/BDovo_Channel
-# 修改自官方示例规则 https://wiki.metacubex.one/example/#meta
-# 转载请保留此注释
-# 尽量添加了较为详尽的注释，不理解的地方建议对照 虚空终端 (Clash Meta) Docs 进行理解
-# 虚空终端 (Clash Meta) Docs 地址: https://wiki.metacubex.one
-# 不理解的地方不要乱动，这套规则我自己在用是正常没问题的，搞坏了我不负责
-
-# 推荐机场: 倾城极速 (https://qcjs.pro/)
-# 全中转 流媒体解锁 8K秒开无压力
+# clash meta 配置，我用来放在openclash的。
 
 # true 是启用
 # false 是禁用
@@ -288,7 +275,7 @@ geox-url:
 # always 开启，强制匹配所有进程
 # strict 默认，由 Clash 判断是否开启
 # off 不匹配进程，推荐在路由器上使用此模式
-find-process-mode: strict
+find-process-mode: off
 
 # 缓解移动设备耗电问题
 # https://github.com/vernesong/OpenClash/issues/2614
@@ -339,7 +326,7 @@ dns:
   ipv6: true
   # 路由器个人建议使用 redir-host 以最佳兼容性
   # 其他设备可以使用 fake-ip
-  enhanced-mode: fake-ip
+  enhanced-mode: redir-host
   fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
     - '*'
