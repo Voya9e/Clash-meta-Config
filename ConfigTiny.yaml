@@ -1,5 +1,5 @@
-# clash meta 配置，我用来放在openclash的。
-
+# mihomo (Clash Meta) 懒人配置
+# 我用来放在OpenClash里的
 # true 是启用
 # false 是禁用
 
@@ -265,21 +265,21 @@ geodata-mode: true
 # 使用 FastGit 代理 (https://fgit.cf)
 # 源地址 https://github.com/MetaCubeX/meta-rules-dat
 # 可以更换镜像站但不要更换其他数据库，可能导致无法启动
-geox-url:
-  geoip: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
-  geosite: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-  mmdb: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+#geox-url:
+#  geoip: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+#  geosite: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+#  mmdb: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
 
 # 进程匹配模式
 # 路由器上请设置为 off
 # always 开启，强制匹配所有进程
 # strict 默认，由 Clash 判断是否开启
 # off 不匹配进程，推荐在路由器上使用此模式
-find-process-mode: off
+#find-process-mode: strict
 
 # 缓解移动设备耗电问题
 # https://github.com/vernesong/OpenClash/issues/2614
-keep-alive-interval: 1800
+#keep-alive-interval: 1800
 
 # 全局客户端指纹
 global-client-fingerprint: random # 随机指纹
@@ -326,7 +326,7 @@ dns:
   ipv6: true
   # 路由器个人建议使用 redir-host 以最佳兼容性
   # 其他设备可以使用 fake-ip
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
     - '*'
@@ -344,12 +344,12 @@ dns:
     - 'tls://1.0.0.1#⚙️ 自动选择'
     - 'tls://[2001:4860:4860::8844]#⚙️ 自动选择'
     - 'tls://[2606:4700:4700::1001]#⚙️ 自动选择'
-  proxy-server-nameserver:
-    - https://doh.pub/dns-query
-  nameserver-policy:
-    "geosite:cn,private":
-      - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
+#  proxy-server-nameserver:
+#    - https://doh.pub/dns-query
+#  nameserver-policy:
+#    "geosite:cn,private":
+#      - https://doh.pub/dns-query
+#      - https://dns.alidns.com/dns-query
 
 # 多入站端口设置
 # listeners:
@@ -467,11 +467,12 @@ proxy-groups:
 rules:
   # 若需禁用 QUIC 请取消注释 QUIC 两条规则
   # 防止 YouTube 等使用 QUIC 导致速度不佳, 禁用 443 端口 UDP 流量（不包括墙内直连）
+  # RULE-SET顺序代表规则匹配优先级
 
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT # quic
   - AND,((RULE-SET,anti-AD),(NOT,((RULE-SET,anti-AD-white)))),⛔ 广告拦截 # 感谢 Telegram @nextyahooquery 提供的建议
 
-  - RULE-SET,OpenAI,💵 PayPal
+  - RULE-SET,PayPal,💵 PayPal
   - RULE-SET,OpenAI,🤖 AI
   - RULE-SET,Gemini,🤖 AI
   - RULE-SET,Copilot,🤖 AI
