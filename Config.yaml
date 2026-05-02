@@ -136,14 +136,6 @@ rule-providers:
     path: ./rule_provider/AWAvenue-Ads.yaml
     url: "https://ghfast.top/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml"
     interval: 600
-  GAME:
-    type: http
-    behavior: classical
-    format: yaml
-    # path可为空(仅限clash.meta 1.15.0以上版本)
-    path: ./rule_provider/GAME.yaml
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml"
-    interval: 600
 
 mode: rule
 # ipv6 支持
@@ -384,13 +376,14 @@ rules:
   - RULE-SET,AWAvenue-Ads,广告拦截
 # - GEOSITE,biliintl,哔哩东南亚
   - GEOSITE,bilibili,哔哩哔哩
-  - GEOSITE,category-scholar-!cn,AI
+  - GEOSITE,category-ai-!cn,AI
   - GEOSITE,apple,Apple
   - GEOSITE,apple-cn,Apple
   # - GEOSITE,ehentai,ehentai
   - GEOSITE,github,GitHub
   - GEOSITE,twitter,Twitter
   - GEOSITE,youtube,YouTube
+  - GEOSITE,twitch,Twitch
   - GEOSITE,google,Google
   - GEOSITE,google-cn,Google # Google CN 不走代理会导致香港等地区节点 Play Store 异常
   - GEOSITE,telegram,Telegram
@@ -399,8 +392,8 @@ rules:
   - GEOSITE,bahamut,巴哈姆特
   # - GEOSITE,spotify,Spotify
   # - GEOSITE,pixiv,Pixiv
-  - GEOSITE,steam@cn,DIRECT
-  # - GEOSITE,steam,Steam
+  - GEOSITE,category-game-platforms-download,DIRECT
+  - GEOSITE,category-games-!cn,GAME
   - GEOSITE,onedrive,OneDrive
   - GEOSITE,microsoft,Microsoft
   - GEOSITE,geolocation-!cn,漏网之鱼
