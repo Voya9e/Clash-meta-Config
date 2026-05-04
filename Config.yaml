@@ -330,6 +330,7 @@ proxy-groups:
         [REJECT, DIRECT, 自动选择],
     }
   - { name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
+  - { name: Crypto, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
   - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
   - { name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png" }
   - { name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png" }
@@ -374,13 +375,23 @@ rules:
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
   - RULE-SET,AWAvenue-Ads,广告拦截
-# - GEOSITE,biliintl,哔哩东南亚
-  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,paypal,PayPal
+  - GEOSITE,category-cryptocurrency,Crypto
+  # Copilot 关键字兜底（最宽泛，放最前）
+  - DOMAIN-KEYWORD,copilot,AI
+  - DOMAIN-KEYWORD,sydney,AI
+  - DOMAIN-KEYWORD,bingapis,AI
+
+  - GEOSITE,bing,AI
   - GEOSITE,category-ai-!cn,AI
+  - GEOSITE,github,GitHub
+  - GEOSITE,onedrive,OneDrive
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,microsoft,Microsoft
+  
   - GEOSITE,apple,Apple
   - GEOSITE,apple-cn,Apple
   # - GEOSITE,ehentai,ehentai
-  - GEOSITE,github,GitHub
   - GEOSITE,twitter,Twitter
   - GEOSITE,youtube,YouTube
   - GEOSITE,twitch,Twitch
@@ -394,8 +405,8 @@ rules:
   # - GEOSITE,pixiv,Pixiv
   - GEOSITE,category-game-platforms-download,DIRECT
   - GEOSITE,category-games-!cn,GAME
-  - GEOSITE,onedrive,OneDrive
-  - GEOSITE,microsoft,Microsoft
+  # - GEOSITE,biliintl,哔哩东南亚
+  - GEOSITE,bilibili,哔哩哔哩
   - GEOSITE,geolocation-!cn,漏网之鱼
   - GEOIP,google,Google
   # - GEOIP,netflix,NETFLIX
