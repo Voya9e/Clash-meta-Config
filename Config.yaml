@@ -368,7 +368,7 @@ rules:
   # 防止 YouTube 等使用 QUIC 导致速度不佳, 禁用 443 端口 UDP 流量（不包括国内）
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
-  - RULE-SET,AWAvenue-Ads,reject
+  - RULE-SET,AWAvenue-Ads,REJECT
   - GEOSITE,paypal,PayPal
   - GEOSITE,category-cryptocurrency,Crypto
   # Copilot 关键字兜底（最宽泛，放最前）
@@ -406,8 +406,8 @@ rules:
   # - GEOIP,netflix,NETFLIX
   - GEOIP,telegram,Telegram
   - GEOIP,twitter,Twitter
-  - GEOSITE,CN,direct
-  - GEOIP,CN,direct
+  - GEOSITE,CN,DIRECT
+  - GEOIP,CN,DIRECT
   # 绕过局域网地址
   - IP-CIDR,10.0.0.0/8,DIRECT
   - IP-CIDR,172.16.0.0/12,DIRECT
