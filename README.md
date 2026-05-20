@@ -1,20 +1,11 @@
-**原版连接**
-***https://gist.github.com/liuran001/5ca84f7def53c70b554d3f765ff86a33***
+# Clash 配置文件
+适配 mihomo 的 Clash 配置文件，可以在手机、电脑等设备上使用，原文件来自于[@liuran001](https://github.com/liuran001 "@liuran001")，配置文件地址为：https://gist.github.com/liuran001/5ca84f7def53c70b554d3f765ff86a33
 
-**分流规则来自**
-**https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash**
+## 本文件说明：
+- 增加代理分组；
+- 增加分流分组。
 
-**图标来自**
-**https://github.com/Koolson/Qure**
+### 请给 liuran001 小星星！
 
-**https://github.com/Orz-3/mini**  
-
-![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/dc9cde01-921b-4084-840d-bf98448c8f2c)
-
-config效果图  
-
-![image](https://github.com/Voya9e/Clash-meta-Config/assets/33347649/ede509c6-f09d-447a-88fb-87ea7f00a007)
-
-config-emoji效果图
-
+*（准备废弃掉 ConfigTiny 文件）*
 

@@ -296,39 +296,33 @@ proxy-groups:
   #- { name: dns, <<: *pr }
   # WARP 配置链式出站
   #- { name: WARP前置, <<: *pr, exclude-type: "wireguard" }
-  - {
-      name: 墙内直连,
-      icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png",
-      type: select,
-      proxies:
-        [
-          自动选择,
-          DIRECT,
-          香港,
-          台湾,
-          韩国,
-          日本,
-          新加坡,
-          美国,
-          👉香港,
-          👉台湾,
-          👉韩国,
-          👉日本,
-          👉新加坡,
-          👉美国,
-          其它地区
-        ],
-    }
+  # - {
+  #     name: 墙内直连,
+  #     icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png",
+  #     type: select,
+  #     proxies:
+  #       [
+  #         自动选择,
+  #         DIRECT,
+  #         香港,
+  #         台湾,
+  #         韩国,
+  #         日本,
+  #         新加坡,
+  #         美国,
+  #         👉香港,
+  #         👉台湾,
+  #         👉韩国,
+  #         👉日本,
+  #         👉新加坡,
+  #         👉美国,
+  #         其它地区
+  #       ],
+  #   }
   # 漏网之鱼就是所有规则没匹配到的
   # 换言之，漏网之鱼走代理就是绕过中国大陆地址，不走就是 GFWList 模式
   - { name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png" }
-  - { 
-      name: 广告拦截, 
-      icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Adblock.png", 
-      type: select, 
-      proxies: 
-        [REJECT, DIRECT, 自动选择],
-    }
+
   - { name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
   - { name: Crypto, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
   - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
@@ -374,7 +368,7 @@ rules:
   # 防止 YouTube 等使用 QUIC 导致速度不佳, 禁用 443 端口 UDP 流量（不包括国内）
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
-  - RULE-SET,AWAvenue-Ads,广告拦截
+  - RULE-SET,AWAvenue-Ads,reject
   - GEOSITE,paypal,PayPal
   - GEOSITE,category-cryptocurrency,Crypto
   # Copilot 关键字兜底（最宽泛，放最前）
@@ -412,8 +406,8 @@ rules:
   # - GEOIP,netflix,NETFLIX
   - GEOIP,telegram,Telegram
   - GEOIP,twitter,Twitter
-  - GEOSITE,CN,墙内直连
-  - GEOIP,CN,墙内直连
+  - GEOSITE,CN,direct
+  - GEOIP,CN,direct
   # 绕过局域网地址
   - IP-CIDR,10.0.0.0/8,DIRECT
   - IP-CIDR,172.16.0.0/12,DIRECT
