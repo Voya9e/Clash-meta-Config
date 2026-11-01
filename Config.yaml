@@ -323,22 +323,29 @@ proxy-groups:
   # 换言之，漏网之鱼走代理就是绕过中国大陆地址，不走就是 GFWList 模式
   - { name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png" }
 
+  # 金融相关
   - { name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
   - { name: Crypto, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
+  # AI 相关
   - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
-  - { name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png" }
+  # 视频相关
   - { name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png" }
   - { name: Twitch, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitch.png" }
+  - { name: TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png"}
+  - { name: X, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png" }
+  # 其他专用服务
+  - { name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png" }
+  - { name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png" }
   - { name: OneDrive, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png" }
   - { name: GAME, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png" }
+  # Google
+  - { name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png" }
   # Apple 推荐走全局直连
   - { name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png" }
+  # Microsoft
   - { name: Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png" }
-  - { name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png" }
-  - { name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png" }
-  - { name: Twitter, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png" }
+  # 哔哩哔哩和巴哈姆特放在服务组末尾
   # bilibili打开之后会代理全站流量，可能导致部分版权视频反而无法播放或视频播放速度缓慢
-  - { name: TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png"}
   - { name: 哔哩哔哩, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png"}
   - { name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png" }
 
@@ -364,50 +371,65 @@ proxy-groups:
 
 
 rules:
+
   # 若需禁用 QUIC 请取消注释 QUIC 两条规则
   # 防止 YouTube 等使用 QUIC 导致速度不佳, 禁用 443 端口 UDP 流量（不包括国内）
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
   - RULE-SET,AWAvenue-Ads,REJECT
+  # 金融相关
   - GEOSITE,paypal,PayPal
   - GEOSITE,category-cryptocurrency,Crypto
-  # Copilot 关键字兜底（最宽泛，放最前）
+  # AI 相关
+  # Copilot 关键词兜底
   - DOMAIN-KEYWORD,copilot,AI
   - DOMAIN-KEYWORD,sydney,AI
   - DOMAIN-KEYWORD,bingapis,AI
-
   - GEOSITE,bing,AI
   - GEOSITE,category-ai-!cn,AI
-  - GEOSITE,github,GitHub
-  - GEOSITE,onedrive,OneDrive
-  - GEOSITE,microsoft@cn,DIRECT
-  - GEOSITE,microsoft,Microsoft
-  
-  - GEOSITE,apple,Apple
-  - GEOSITE,apple-cn,Apple
-  # - GEOSITE,ehentai,ehentai
-  - GEOSITE,twitter,Twitter
+  # Apple Intelligence / Siri / Private Cloud Compute
+  - DOMAIN,guzzoni.apple.com,AI
+  - DOMAIN-SUFFIX,smoot.apple.com,AI
+  - DOMAIN,apple-relay.cloudflare.com,AI
+  - DOMAIN,apple-relay.fastly-edge.com,AI
+  - DOMAIN,cp4.cloudflare.com,AI
+  - DOMAIN,apple-relay.apple.com,AI
+  # 视频相关
+  # X 视频播放流量走 YouTube 策略组
+  - DOMAIN-SUFFIX,video.twimg.com,YouTube
   - GEOSITE,youtube,YouTube
   - GEOSITE,twitch,Twitch
-  - GEOSITE,google,Google
-  - GEOSITE,google-cn,Google # Google CN 不走代理会导致香港等地区节点 Play Store 异常
-  - GEOSITE,telegram,Telegram
   # - GEOSITE,netflix,NETFLIX
   - GEOSITE,tiktok,TikTok
   - GEOSITE,bahamut,巴哈姆特
+  # - GEOSITE,biliintl,哔哩东南亚
+  - GEOSITE,bilibili,哔哩哔哩
+  # 子服务及其他专用规则
+  - GEOSITE,github,GitHub
+  - GEOSITE,onedrive,OneDrive
+  - GEOSITE,telegram,Telegram
+  - GEOIP,telegram,Telegram
+  - GEOSITE,twitter,X
+  - GEOIP,twitter,X
+  # - GEOSITE,ehentai,ehentai
   # - GEOSITE,spotify,Spotify
   # - GEOSITE,pixiv,Pixiv
   - GEOSITE,category-game-platforms-download,DIRECT
   - GEOSITE,category-games-!cn,GAME
-  # - GEOSITE,biliintl,哔哩东南亚
-  - GEOSITE,bilibili,哔哩哔哩
-  - GEOSITE,geolocation-!cn,漏网之鱼
+  # Google
+  - GEOSITE,google-cn,Google # Google CN 不走代理会导致香港等地区节点 Play Store 异常
+  - GEOSITE,google,Google
   - GEOIP,google,Google
-  # - GEOIP,netflix,NETFLIX
-  - GEOIP,telegram,Telegram
-  - GEOIP,twitter,Twitter
+  # Apple
+  - GEOSITE,apple-cn,Apple
+  - GEOSITE,apple,Apple
+  # Microsoft
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,microsoft,Microsoft
+  # 国内及兜底
   - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT
+  - GEOSITE,geolocation-!cn,漏网之鱼
   # 绕过局域网地址
   - IP-CIDR,10.0.0.0/8,DIRECT
   - IP-CIDR,172.16.0.0/12,DIRECT
