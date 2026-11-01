@@ -64,6 +64,10 @@ pp: &p
     timeout: 1000
     # 节点自动切换差值，单位为毫秒
     tolerance: 100
+  # 替代已移除的全局指纹，仅对支持 uTLS 的订阅节点设置随机指纹
+  override:
+    override-expr:
+      - '. |= (select(.type == "vmess" or .type == "vless" or .type == "trojan" or .type == "anytls") | .client-fingerprint = "random")'
 
 # 基础配置
 # --------------------------------------------------
@@ -177,8 +181,6 @@ find-process-mode: strict
 # https://github.com/vernesong/OpenClash/issues/2614
 keep-alive-interval: 1800
 
-# 全局客户端指纹
-global-client-fingerprint: random # 随机指纹
 
 # 缓存
 profile:
@@ -408,7 +410,6 @@ rules:
   - GEOSITE,github,GitHub
   - GEOSITE,onedrive,OneDrive
   - GEOSITE,telegram,Telegram
-  - GEOIP,telegram,Telegram
   - GEOSITE,twitter,X
   - GEOIP,twitter,X
   # - GEOSITE,ehentai,ehentai
