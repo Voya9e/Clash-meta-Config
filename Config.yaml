@@ -350,23 +350,23 @@ proxy-groups:
   - { name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png" }
 
   # 分隔,下面是地区分组
-  - { name: 香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: url-test, filter: "(?i)港|hk|hongkong|hong kong" }
-  - { name: 台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: url-test, filter: "(?i)台|tw|taiwan" }
-  - { name: 韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: url-test, filter: "KR|Korea|KOR|首尔|韩|韓" }
-  - { name: 日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: url-test, filter: "(?i)日本|jp|japan" }
-  - { name: 美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: url-test, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" }
-  - { name: 新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: url-test, filter: "新加坡|狮城|SG|Singapore" }
-  - { name: 👉香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: select, filter: "(?i)港|hk|hongkong|hong kong" }
-  - { name: 👉台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: select, filter: "(?i)台|tw|taiwan" }
-  - { name: 👉韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: select, filter: "KR|Korea|KOR|首尔|韩|韓" }
-  - { name: 👉日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: select, filter: "(?i)日本|jp|japan" }
-  - { name: 👉美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: select, filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States" }
-  - { name: 👉新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: select, filter: "新加坡|狮城|SG|Singapore" }
+  - { name: 香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: url-test, filter: "(?i)(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: url-test, filter: "(?i)(台湾|台灣|台北|臺北|台中|臺中|台南|臺南|高雄|新北|彰化|基隆|桃园|桃園|🇹🇼|(?:^|[^A-Za-z])(?:TW|TWN|Taiwan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: url-test, filter: "(?i)(韩国|韓國|首尔|首爾|釜山|🇰🇷|대한민국|한국|(?:^|[^A-Za-z])(?:KR|KOR|Korea|Seoul|Busan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: url-test, filter: "(?i)(日本|川日|东京|東京|大阪|泉日|埼玉|京都|名古屋|福冈|福岡|札幌|冲绳|沖繩|🇯🇵|(?:^|[^A-Za-z])(?:JP|JPN|Japan|Tokyo|Osaka)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: url-test, filter: "(?i)(美国|美國|波特兰|波特蘭|达拉斯|達拉斯|俄勒冈|俄勒岡|凤凰城|費利蒙|费利蒙|硅谷|拉斯维加斯|拉斯維加斯|洛杉矶|洛杉磯|圣何塞|聖荷西|圣克拉拉|聖克拉拉|西雅图|西雅圖|芝加哥|🇺🇸|(?:^|[^A-Za-z])(?:US|USA|United[ ]+States|America|Portland|Dallas|Oregon|Phoenix|Fremont|Silicon[ ]+Valley|Las[ ]+Vegas|Los[ ]+Angeles|San[ ]+Jose|Santa[ ]+Clara|Seattle|Chicago|New[ ]+York)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: url-test, filter: "(?i)(新加坡|狮城|獅城|🇸🇬|(?:^|[^A-Za-z])(?:SG|SGP|Singapore)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 👉香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: select, filter: "(?i)(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 👉台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: select, filter: "(?i)(台湾|台灣|台北|臺北|台中|臺中|台南|臺南|高雄|新北|彰化|基隆|桃园|桃園|🇹🇼|(?:^|[^A-Za-z])(?:TW|TWN|Taiwan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 👉韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: select, filter: "(?i)(韩国|韓國|首尔|首爾|釜山|🇰🇷|대한민국|한국|(?:^|[^A-Za-z])(?:KR|KOR|Korea|Seoul|Busan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 👉日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: select, filter: "(?i)(日本|川日|东京|東京|大阪|泉日|埼玉|京都|名古屋|福冈|福岡|札幌|冲绳|沖繩|🇯🇵|(?:^|[^A-Za-z])(?:JP|JPN|Japan|Tokyo|Osaka)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 👉美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: select, filter: "(?i)(美国|美國|波特兰|波特蘭|达拉斯|達拉斯|俄勒冈|俄勒岡|凤凰城|費利蒙|费利蒙|硅谷|拉斯维加斯|拉斯維加斯|洛杉矶|洛杉磯|圣何塞|聖荷西|圣克拉拉|聖克拉拉|西雅图|西雅圖|芝加哥|🇺🇸|(?:^|[^A-Za-z])(?:US|USA|United[ ]+States|America|Portland|Dallas|Oregon|Phoenix|Fremont|Silicon[ ]+Valley|Las[ ]+Vegas|Los[ ]+Angeles|San[ ]+Jose|Santa[ ]+Clara|Seattle|Chicago|New[ ]+York)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 👉新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: select, filter: "(?i)(新加坡|狮城|獅城|🇸🇬|(?:^|[^A-Za-z])(?:SG|SGP|Singapore)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
   - {
       name: 其它地区,
       <<: *use,
       icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png",
-      filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇹🇼|🇰🇷|港|hk|HK|Hong Kong|HongKong|hongkong|台|tw|taiwan|新北|彰化|TW|Taiwan|KR|Korea|KOR|首尔|韩|韓|日|jp|japan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|新|sg|singapore|新加坡|狮城|SG|Singapore|美|us|unitedstates|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)).*",
+      exclude-filter: "(?i)((日本|川日|东京|東京|大阪|泉日|埼玉|京都|名古屋|福冈|福岡|札幌|冲绳|沖繩|🇯🇵|(?:^|[^A-Za-z])(?:JP|JPN|Japan|Tokyo|Osaka)(?:[0-9]+)?(?:$|[^A-Za-z]))|(韩国|韓國|首尔|首爾|釜山|🇰🇷|대한민국|한국|(?:^|[^A-Za-z])(?:KR|KOR|Korea|Seoul|Busan)(?:[0-9]+)?(?:$|[^A-Za-z]))|(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))|(美国|美國|波特兰|波特蘭|达拉斯|達拉斯|俄勒冈|俄勒岡|凤凰城|費利蒙|费利蒙|硅谷|拉斯维加斯|拉斯維加斯|洛杉矶|洛杉磯|圣何塞|聖荷西|圣克拉拉|聖克拉拉|西雅图|西雅圖|芝加哥|🇺🇸|(?:^|[^A-Za-z])(?:US|USA|United[ ]+States|America|Portland|Dallas|Oregon|Phoenix|Fremont|Silicon[ ]+Valley|Las[ ]+Vegas|Los[ ]+Angeles|San[ ]+Jose|Santa[ ]+Clara|Seattle|Chicago|New[ ]+York)(?:[0-9]+)?(?:$|[^A-Za-z]))|(新加坡|狮城|獅城|🇸🇬|(?:^|[^A-Za-z])(?:SG|SGP|Singapore)(?:[0-9]+)?(?:$|[^A-Za-z]))|(台湾|台灣|台北|臺北|台中|臺中|台南|臺南|高雄|新北|彰化|基隆|桃园|桃園|🇹🇼|(?:^|[^A-Za-z])(?:TW|TWN|Taiwan)(?:[0-9]+)?(?:$|[^A-Za-z])))",
     }
 
 
