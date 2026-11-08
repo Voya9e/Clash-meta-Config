@@ -140,6 +140,42 @@ rule-providers:
     path: ./rule_provider/AWAvenue-Ads.yaml
     url: "https://ghfast.top/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml"
     interval: 600
+  # Apple 细分规则（Sukka Ruleset）
+  AppleIntelligence:
+    type: http
+    behavior: classical
+    format: text
+    path: ./rule_provider/AppleIntelligence.txt
+    url: https://ruleset.skk.moe/Clash/non_ip/apple_intelligence.txt
+    interval: 86400
+  AppleCN:
+    type: http
+    behavior: classical
+    format: text
+    path: ./rule_provider/AppleCN.txt
+    url: https://ruleset.skk.moe/Clash/non_ip/apple_cn.txt
+    interval: 86400
+  AppleServices:
+    type: http
+    behavior: classical
+    format: text
+    path: ./rule_provider/AppleServices.txt
+    url: https://ruleset.skk.moe/Clash/non_ip/apple_services.txt
+    interval: 86400
+  AppleCDN:
+    type: http
+    behavior: domain
+    format: text
+    path: ./rule_provider/AppleCDN.txt
+    url: https://ruleset.skk.moe/Clash/domainset/apple_cdn.txt
+    interval: 86400
+  iCloudPrivateRelay:
+    type: http
+    behavior: domain
+    format: text
+    path: ./rule_provider/iCloudPrivateRelay.txt
+    url: https://ruleset.skk.moe/Clash/domainset/icloud_private_relay.txt
+    interval: 86400
 
 mode: rule
 # ipv6 支持
@@ -331,8 +367,7 @@ proxy-groups:
   # AI 相关
   - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
   # 视频相关
-  - { name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png" }
-  - { name: Twitch, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitch.png" }
+  - { name: Stream, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png" }
   - { name: TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png"}
   - { name: X, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png" }
   # 其他专用服务
@@ -389,18 +424,15 @@ rules:
   - DOMAIN-KEYWORD,bingapis,AI
   - GEOSITE,bing,AI
   - GEOSITE,category-ai-!cn,AI
-  # Apple Intelligence / Siri / Private Cloud Compute
-  - DOMAIN,guzzoni.apple.com,AI
-  - DOMAIN-SUFFIX,smoot.apple.com,AI
-  - DOMAIN,apple-relay.cloudflare.com,AI
-  - DOMAIN,apple-relay.fastly-edge.com,AI
-  - DOMAIN,cp4.cloudflare.com,AI
-  - DOMAIN,apple-relay.apple.com,AI
+  # Apple Intelligence 独立走 AI 策略；放在 Apple 通用规则之前
+  - RULE-SET,AppleIntelligence,AI
+  # Apple Intelligence 与 iCloud Private Relay 分开处理
+  - RULE-SET,iCloudPrivateRelay,Apple
   # 视频相关
-  # X 视频播放流量走 YouTube 策略组
-  - DOMAIN-SUFFIX,video.twimg.com,YouTube
-  - GEOSITE,youtube,YouTube
-  - GEOSITE,twitch,Twitch
+  # YouTube、Twitch 与 X 视频统一走 Stream 策略组
+  - DOMAIN-SUFFIX,video.twimg.com,Stream
+  - GEOSITE,youtube,Stream
+  - GEOSITE,twitch,Stream
   # - GEOSITE,netflix,NETFLIX
   - GEOSITE,tiktok,TikTok
   - GEOSITE,bahamut,巴哈姆特
@@ -421,8 +453,12 @@ rules:
   - GEOSITE,google-cn,Google # Google CN 不走代理会导致香港等地区节点 Play Store 异常
   - GEOSITE,google,Google
   - GEOIP,google,Google
-  # Apple
-  - GEOSITE,apple-cn,Apple
+  # Apple 中国区及中国大陆 CDN 直连
+  - RULE-SET,AppleCDN,DIRECT
+  - RULE-SET,AppleCN,DIRECT
+  # Apple 常规服务直连
+  - RULE-SET,AppleServices,DIRECT
+  # Apple 其余服务走 Apple 策略组（作为非中国 CDN / Apple 服务兜底）
   - GEOSITE,apple,Apple
   # Microsoft
   - GEOSITE,microsoft@cn,DIRECT
