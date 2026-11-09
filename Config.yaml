@@ -362,30 +362,30 @@ proxy-groups:
   - { name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png" }
 
   # 金融相关
-  - { name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
-  - { name: BankHK, <<: *pr, icon: "https://dashboardicons.com/api/icons/external/simpleicons/hsbc/brand.png" }
-  - { name: Crypto, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
+  - { name: PayPal, <<: *pr, proxies: [美国, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 新加坡, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
+  - { name: BankHK, <<: *pr, proxies: [香港, 自动选择, DIRECT, 台湾, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://dashboardicons.com/api/icons/external/simpleicons/hsbc/brand.png" }
+  - { name: Crypto, <<: *pr, proxies: [台湾, 自动选择, DIRECT, 香港, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
   # AI 相关
-  - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
+  - { name: AI, <<: *pr, proxies: [美国, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 新加坡, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
   # 视频相关
-  - { name: Stream, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png" }
-  - { name: TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png"}
-  - { name: X, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png" }
+  - { name: Stream, <<: *pr, proxies: [新加坡, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png" }
+  - { name: TikTok, <<: *pr, proxies: [日本, 自动选择, DIRECT, 香港, 台湾, 韩国, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png"}
+  - { name: X, <<: *pr, proxies: [美国, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 新加坡, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png" }
   # 其他专用服务
-  - { name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png" }
+  - { name: Telegram, <<: *pr, proxies: [新加坡, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png" }
   - { name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png" }
   - { name: OneDrive, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png" }
-  - { name: GAME, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png" }
+  - { name: GAME, <<: *pr, proxies: [香港, 自动选择, DIRECT, 台湾, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png" }
   # Google
-  - { name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png" }
+  - { name: Google, <<: *pr, proxies: [美国, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 新加坡, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png" }
   # Apple 推荐走全局直连
-  - { name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png" }
+  - { name: Apple, <<: *pr, proxies: [香港, 自动选择, DIRECT, 台湾, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png" }
   # Microsoft
-  - { name: Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png" }
+  - { name: Microsoft, <<: *pr, proxies: [美国, 自动选择, DIRECT, 香港, 台湾, 韩国, 日本, 新加坡, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png" }
   # 哔哩哔哩和巴哈姆特放在服务组末尾
   # bilibili打开之后会代理全站流量，可能导致部分版权视频反而无法播放或视频播放速度缓慢
-  - { name: 哔哩哔哩, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png"}
-  - { name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png" }
+  - { name: 哔哩哔哩, <<: *pr, proxies: [台湾, 自动选择, DIRECT, 香港, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png"}
+  - { name: 巴哈姆特, <<: *pr, proxies: [台湾, 自动选择, DIRECT, 香港, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png" }
 
   # 分隔,下面是地区分组
   - { name: 香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: url-test, filter: "(?i)(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
