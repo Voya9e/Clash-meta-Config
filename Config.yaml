@@ -363,8 +363,8 @@ proxy-groups:
 
   # 金融相关
   - { name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
+  - { name: BankHK, <<: *pr, icon: "https://dashboardicons.com/api/icons/external/simpleicons/hsbc/brand.png" }
   - { name: Crypto, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
-  - { name: BankHK, <<: *pr, icon: "https://fastly.jsdelivr.net/gh/Accademia/Additional_Icon_For_Clash@master/Categ/Bank.png" }
   # AI 相关
   - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
   # 视频相关
