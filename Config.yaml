@@ -364,6 +364,7 @@ proxy-groups:
   # 金融相关
   - { name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png" }
   - { name: Crypto, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency.png" }
+  - { name: BankHK, <<: *pr, icon: "https://fastly.jsdelivr.net/gh/Accademia/Additional_Icon_For_Clash@master/Categ/Bank.png" }
   # AI 相关
   - { name: AI, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Copilot.png" }
   # 视频相关
@@ -414,6 +415,37 @@ rules:
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOSITE,cn))),REJECT
 # - AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN))),REJECT
   - RULE-SET,AWAvenue-Ads,REJECT
+  # BankHK: Accademia/Additional_Rule_For_Clash BankHK.yaml + BankHK_Domain.yaml
+  - DOMAIN-SUFFIX,hsbc.com.hk,BankHK
+  - DOMAIN,hk.hsbc.com,BankHK
+  - DOMAIN-SUFFIX,vam-hk.cloud1.vv1865.com,BankHK
+  - DOMAIN,mobile.eum-appdynamics.com,BankHK
+  - DOMAIN,accdn.lpsnmedia.net,BankHK
+  - DOMAIN,collect-ap-east-1.tealiumiq.com,BankHK
+  - DOMAIN-SUFFIX,sc.com.hk,BankHK
+  - DOMAIN-SUFFIX,sc.com,BankHK
+  - DOMAIN-KEYWORD,standchartbank,BankHK
+  - DOMAIN,yvn1g4-cdn-settings.appsflyersdk.com,BankHK
+  - DOMAIN,yvn1g4-launches.appsflyersdk.com,BankHK
+  - DOMAIN-SUFFIX,bochk.com,BankHK
+  - DOMAIN-SUFFIX,ocbcwhhk.com,BankHK
+  - DOMAIN-SUFFIX,hangseng.com,BankHK
+  - DOMAIN-SUFFIX,cmbwinglungbank.com,BankHK
+  - DOMAIN-SUFFIX,cncbinternational.com,BankHK
+  - DOMAIN-SUFFIX,citibank.com.hk,BankHK
+  - DOMAIN-SUFFIX,dbs.com.hk,BankHK
+  - DOMAIN-SUFFIX,ncb.com.hk,BankHK
+  - DOMAIN-SUFFIX,za.group,BankHK
+  - DOMAIN-SUFFIX,cdn.zaticdn.com,BankHK
+  # HenryChiao README bank-hk.list additions; rule file currently unavailable (404)
+  - DOMAIN-SUFFIX,hkbea.com,BankHK
+  - DOMAIN-SUFFIX,icbcasia.com,BankHK
+  - DOMAIN-SUFFIX,asia.ccb.com,BankHK
+  - DOMAIN-SUFFIX,ocbc.com.hk,BankHK
+  - DOMAIN-SUFFIX,dahsing.com,BankHK
+  - DOMAIN-SUFFIX,welab.bank,BankHK
+  - DOMAIN-SUFFIX,fusionbank.com,BankHK
+  - DOMAIN-SUFFIX,mox.com,BankHK
   # 金融相关
   - GEOSITE,paypal,PayPal
   - GEOSITE,category-cryptocurrency,Crypto
