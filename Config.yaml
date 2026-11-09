@@ -435,12 +435,14 @@ rules:
   - DOMAIN-SUFFIX,citibank.com.hk,BankHK
   - DOMAIN-SUFFIX,dbs.com.hk,BankHK
   - DOMAIN-SUFFIX,ncb.com.hk,BankHK
+  - DOMAIN-SUFFIX,bank.za.group,BankHK
   - DOMAIN-SUFFIX,za.group,BankHK
   - DOMAIN-SUFFIX,cdn.zaticdn.com,BankHK
   # HenryChiao bank-hk.list (2026-01-05): https://github.com/HenryChiao/the_clash_ruleset/blob/main/The_Location_rule-set/Bank_rule-set/bank-hk.list
   - DOMAIN-SUFFIX,hkbea.com,BankHK
   - DOMAIN-SUFFIX,icbcasia.com,BankHK
   - DOMAIN-SUFFIX,asia.ccb.com,BankHK
+  - DOMAIN-SUFFIX,online.asia.ccb.com,BankHK
   - DOMAIN-SUFFIX,ocbc.com.hk,BankHK
   - DOMAIN-SUFFIX,dahsing.com,BankHK
   - DOMAIN-SUFFIX,welab.bank,BankHK
