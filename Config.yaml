@@ -437,7 +437,7 @@ rules:
   - DOMAIN-SUFFIX,ncb.com.hk,BankHK
   - DOMAIN-SUFFIX,za.group,BankHK
   - DOMAIN-SUFFIX,cdn.zaticdn.com,BankHK
-  # HenryChiao README bank-hk.list additions; rule file currently unavailable (404)
+  # HenryChiao bank-hk.list (2026-01-05): https://github.com/HenryChiao/the_clash_ruleset/blob/main/The_Location_rule-set/Bank_rule-set/bank-hk.list
   - DOMAIN-SUFFIX,hkbea.com,BankHK
   - DOMAIN-SUFFIX,icbcasia.com,BankHK
   - DOMAIN-SUFFIX,asia.ccb.com,BankHK
