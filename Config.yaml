@@ -290,6 +290,10 @@ dns:
     - 'tls://[2606:4700:4700::1001]#自动选择'
   proxy-server-nameserver:
     - https://doh.pub/dns-query
+  direct-nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  direct-nameserver-follow-policy: false
 
   #clash-meta内核使用
   nameserver-policy:
