@@ -95,7 +95,7 @@ pp: &p
 # 添删订阅在这里和下方订阅链接依葫芦画瓢就行
 use: &use
   # 统一控制自动测速组类型；OpenClash 开启 Smart 自动切换后会将 url-test 转为 smart
-  type: url-test
+  type: smart
   # url-test 切换容差，单位为毫秒
   tolerance: 2
   # 使用 LightGBM 模型预测节点权重
