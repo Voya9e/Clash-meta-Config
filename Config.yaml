@@ -27,10 +27,12 @@
 # true 是启用
 # false 是禁用
 
-# LightGBM 模型配置（vernesong/mihomo Smart 内核专属）
+# Smart 内核 LightGBM 模型自动更新开关；true 启用，false 禁用
 lgbm-auto-update: true
+# LightGBM 模型自动更新间隔，单位为小时
 lgbm-update-interval: 72
-lgbm-url: "https://v6.gh-proxy.org/https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin"
+# LightGBM 模型下载地址；留空时使用内核默认地址
+lgbm-url: ""
 
 # 分组
 pr:
@@ -92,28 +94,20 @@ pp: &p
 # 订阅名，记得修改成自己的
 # 添删订阅在这里和下方订阅链接依葫芦画瓢就行
 use: &use
-  # Smart 内核通过 LightGBM 模型预测节点表现；需使用 vernesong/mihomo Smart 版本
-  type: smart
+  # 统一控制自动测速组类型；OpenClash 开启 Smart 自动切换后会将 url-test 转为 smart
+  type: url-test
+  # url-test 切换容差，单位为毫秒
+  tolerance: 2
+  # 使用 LightGBM 模型预测节点权重
   uselightgbm: true
+  # 优先查询 ASN 信息，辅助判断节点所属网络
   prefer-asn: true
-  # 收集数据用于模型训练；默认关闭，避免主动采集
+  # 收集连接表现数据用于模型训练；关闭时不主动采集
   collectdata: false
-  #policy-priority: "Premium:0.9;SG:1.3"
-  # --- Smart 内核专属设置
-  # 把上面那行 `type` 删掉
-  #type: smart
-  # 下方为 Smart 内核高级设置，如果不懂则不要启用，只切换 `type: smart` 即可
-  # policy-priority: <1 表示更低优先级，>1 表示更高优先级，默认值为 1，匹配规则支持正则表达式和字符串
-  #policy-priority: "Premium:0.9;SG:1.3" 
-  # uselightgbm: 使用 LightGBM 模型预测权重
-  #uselightgbm: false
-  # collectdata: 收集数据用于模型训练
-  #collectdata: false
-  # sample-rate: 数据采集率，可取 0-1 之间的值，默认值为 1
-  #sample-rate: 1
-  # prefer-asn: 节点选择时强制优先查询 ASN，默认值为 false
-  #prefer-asn: true
-  # --- Smart 内核专属设置结束
+  # 数据采样比例，范围 0–1；仅 collectdata 启用时生效
+  sample-rate: 1
+  # 策略优先级权重规则，格式为“匹配文本或正则:系数”，多条规则用分号分隔；留空不设置额外权重
+  policy-priority: ""
   use:
     - A
     - B
@@ -232,6 +226,8 @@ keep-alive-interval: 1800
 profile:
   store-selected: true
   store-fake-ip: true
+  # Smart 数据采集文件最大大小，单位为 MB；仅 collectdata 启用时使用
+  smart-collector-size: 100
 
 # 自动同步时间以防止时间不准导致无法正常联网
 ntp:
@@ -340,7 +336,7 @@ proxies:
   #     - https://dns.cloudflare.com/dns-query
 
 proxy-groups:
-  - { name: 自动选择, <<: *use, tolerance: 2, type: url-test, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png" }
+  - { name: 自动选择, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png" }
   # 手动选择模板，需要在分组添加手动选择
   #- { name: 💪手动选择, <<: *use }
   # 使用 WARP 的用户需要手动 proxies 字段内添加 WARP
@@ -402,12 +398,12 @@ proxy-groups:
   - { name: 巴哈姆特, <<: *pr, proxies: [台湾, 自动选择, DIRECT, 香港, 韩国, 日本, 新加坡, 美国, 👉香港, 👉台湾, 👉韩国, 👉日本, 👉新加坡, 👉美国, 其它地区], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png" }
 
   # 分隔,下面是地区分组
-  - { name: 香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: url-test, filter: "(?i)(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
-  - { name: 台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: url-test, filter: "(?i)(台湾|台灣|台北|臺北|台中|臺中|台南|臺南|高雄|新北|彰化|基隆|桃园|桃園|🇹🇼|(?:^|[^A-Za-z])(?:TW|TWN|Taiwan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
-  - { name: 韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: url-test, filter: "(?i)(韩国|韓國|首尔|首爾|釜山|🇰🇷|대한민국|한국|(?:^|[^A-Za-z])(?:KR|KOR|Korea|Seoul|Busan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
-  - { name: 日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", tolerance: 2, type: url-test, filter: "(?i)(日本|川日|东京|東京|大阪|泉日|埼玉|京都|名古屋|福冈|福岡|札幌|冲绳|沖繩|🇯🇵|(?:^|[^A-Za-z])(?:JP|JPN|Japan|Tokyo|Osaka)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
-  - { name: 美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", tolerance: 2, type: url-test, filter: "(?i)(美国|美國|波特兰|波特蘭|达拉斯|達拉斯|俄勒冈|俄勒岡|凤凰城|費利蒙|费利蒙|硅谷|拉斯维加斯|拉斯維加斯|洛杉矶|洛杉磯|圣何塞|聖荷西|圣克拉拉|聖克拉拉|西雅图|西雅圖|芝加哥|🇺🇸|(?:^|[^A-Za-z])(?:US|USA|United[ ]+States|America|Portland|Dallas|Oregon|Phoenix|Fremont|Silicon[ ]+Valley|Las[ ]+Vegas|Los[ ]+Angeles|San[ ]+Jose|Santa[ ]+Clara|Seattle|Chicago|New[ ]+York)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
-  - { name: 新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", tolerance: 2, type: url-test, filter: "(?i)(新加坡|狮城|獅城|🇸🇬|(?:^|[^A-Za-z])(?:SG|SGP|Singapore)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", filter: "(?i)(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", filter: "(?i)(台湾|台灣|台北|臺北|台中|臺中|台南|臺南|高雄|新北|彰化|基隆|桃园|桃園|🇹🇼|(?:^|[^A-Za-z])(?:TW|TWN|Taiwan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", filter: "(?i)(韩国|韓國|首尔|首爾|釜山|🇰🇷|대한민국|한국|(?:^|[^A-Za-z])(?:KR|KOR|Korea|Seoul|Busan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 日本, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png", filter: "(?i)(日本|川日|东京|東京|大阪|泉日|埼玉|京都|名古屋|福冈|福岡|札幌|冲绳|沖繩|🇯🇵|(?:^|[^A-Za-z])(?:JP|JPN|Japan|Tokyo|Osaka)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 美国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png", filter: "(?i)(美国|美國|波特兰|波特蘭|达拉斯|達拉斯|俄勒冈|俄勒岡|凤凰城|費利蒙|费利蒙|硅谷|拉斯维加斯|拉斯維加斯|洛杉矶|洛杉磯|圣何塞|聖荷西|圣克拉拉|聖克拉拉|西雅图|西雅圖|芝加哥|🇺🇸|(?:^|[^A-Za-z])(?:US|USA|United[ ]+States|America|Portland|Dallas|Oregon|Phoenix|Fremont|Silicon[ ]+Valley|Las[ ]+Vegas|Los[ ]+Angeles|San[ ]+Jose|Santa[ ]+Clara|Seattle|Chicago|New[ ]+York)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
+  - { name: 新加坡, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png", filter: "(?i)(新加坡|狮城|獅城|🇸🇬|(?:^|[^A-Za-z])(?:SG|SGP|Singapore)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
   - { name: 👉香港, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png", tolerance: 2, type: select, filter: "(?i)(香港|🇭🇰|(?:^|[^A-Za-z])(?:HK|HKG|Hong[ ]*Kong)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
   - { name: 👉台湾, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png", tolerance: 2, type: select, filter: "(?i)(台湾|台灣|台北|臺北|台中|臺中|台南|臺南|高雄|新北|彰化|基隆|桃园|桃園|🇹🇼|(?:^|[^A-Za-z])(?:TW|TWN|Taiwan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
   - { name: 👉韩国, <<: *use, icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png", tolerance: 2, type: select, filter: "(?i)(韩国|韓國|首尔|首爾|釜山|🇰🇷|대한민국|한국|(?:^|[^A-Za-z])(?:KR|KOR|Korea|Seoul|Busan)(?:[0-9]+)?(?:$|[^A-Za-z]))" }
@@ -522,3 +518,4 @@ rules:
   - IP-CIDR,100.64.0.0/10,DIRECT
   - IP-CIDR,127.0.0.0/8,DIRECT
   - MATCH,漏网之鱼
+
