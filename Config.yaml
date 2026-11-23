@@ -318,7 +318,7 @@ dns:
 #     port: 12993
 #     proxy: 新加坡
 
-proxies:
+proxies: []
   # - name: "WARP"
   #   type: wireguard
   #   server: engage.cloudflareclient.com
